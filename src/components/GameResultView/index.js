@@ -1,7 +1,8 @@
 import './index.css'
 
 const GameResultView = props => {
-  const {choicesList, isShown, checkResult, newArray, text, restartGame} = props
+  const {choicesList, isShown, checkResult, newArray, text} = props
+  const {restartGame} = props
 
   const showGame = () => (
     <div>

@@ -2,7 +2,16 @@ import {Component} from 'react'
 import Popup from 'reactjs-popup'
 import {RiCloseLine} from 'react-icons/ri'
 import GameResultView from './components/GameResultView'
-import './App.css'
+import {
+  ScoreRes,
+  Row,
+  Column,
+  Container,
+  ScoreCard,
+  Head,
+  PopupClose,
+  Break,
+} from './styledComponent'
 
 const choicesList = [
   {
@@ -31,7 +40,7 @@ const gameStaus = {
 
 const options = {
   rock: 'ROCK',
-  siccors: 'SCISSORS',
+  scissors: 'SCISSORS',
   paper: 'PAPER',
 }
 
@@ -50,14 +59,14 @@ class App extends Component {
       switch (opponent.id) {
         case options.paper:
           return gameStaus.lose
-        case options.siccors:
+        case options.scissors:
           return gameStaus.win
         default:
           return gameStaus.draw
       }
     } else if (user.id === options.paper) {
       switch (opponent.id) {
-        case options.siccors:
+        case options.scissors:
           return gameStaus.lose
         case options.rock:
           return gameStaus.win
@@ -101,31 +110,34 @@ class App extends Component {
     <img
       src="https://assets.ccbp.in/frontend/react-js/rock-paper-scissor/rules-image.png"
       alt="rules"
+      className="res-img"
     />
   )
 
   renderScoreCard = score => (
-    <div className="row">
-      <div className="column">
-        <h1>
+    <Row>
+      <Column>
+        <Head>
           ROCK
-          <br />
+          <Break />
           PAPER
-          <br />
+          <Break />
           SCISSORS
-        </h1>
-      </div>
-      <div className="score-card column">
-        <p>Score</p>
-        <p className="score-res">{score}</p>
-      </div>
-    </div>
+        </Head>
+      </Column>
+      <ScoreCard>
+        <Column>
+          <p>Score</p>
+          <ScoreRes>{score}</ScoreRes>
+        </Column>
+      </ScoreCard>
+    </Row>
   )
 
   render() {
     const {score, isShown, text, newArray} = this.state
     return (
-      <div className="container">
+      <Container>
         {this.renderScoreCard(score)}
         <GameResultView
           choicesList={choicesList}
@@ -138,22 +150,19 @@ class App extends Component {
 
         <Popup
           modal
-          trigger={
-            <button type="button" onClick={this.showRule()}>
-              RULES
-            </button>
-          }
+          trigger={<button type="button">RULES</button>}
+          className="popup"
         >
           {close => (
-            <div>
+            <PopupClose className="popup-close">
               <button type="button" onClick={() => close()}>
                 <RiCloseLine />
               </button>
               {this.showRule()}
-            </div>
+            </PopupClose>
           )}
         </Popup>
-      </div>
+      </Container>
     )
   }
 }

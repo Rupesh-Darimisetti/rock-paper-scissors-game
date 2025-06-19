@@ -3,15 +3,9 @@
   outline: none;
   border: none;
   width: clamp(200px, 100%, 500px);
-  font-family: 'Bree Serif';
 }
 .game-icon {
   width: 100px;
-  font-family: 'Bree Serif';
-}
-
-.score {
-  font-family: 'Bree Serif';
 }
 
 .stat {
@@ -19,18 +13,19 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  font-family: 'Bree Serif';
 }
 .game-row {
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
   list-style-type: none;
-  font-family: 'Bree Serif';
+
   align-items: center;
   justify-content: space-evenly;
 }
-.li {
+li {
   list-style-type: none;
-  font-family: 'Bree Serif';
+}
+.score {
+  font-family: Roboto;
 }
